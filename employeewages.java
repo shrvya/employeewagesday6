@@ -4,56 +4,66 @@ public class employeewages {
  
 	public static final int IS_FULL_TIME=1;
 	public static final int  IS_PART_TIME=2;
+	
+	private final String company;
 	private final int WAGE_PER_HOUR;
 	public final int WDAYS_PER_MONTH;
 	public final int MAX_WRK_HRSMONTH;
-    public employeewages(int WAGE_PER_HOUR,int WDAYS_PER_MONTH,int MAX_WRK_HRSMONTH )
+    public employeewages(String company,int WAGE_PER_HOUR,int WDAYS_PER_MONTH,int MAX_WRK_HRSMONTH )
     {
+    	this.company=company;
     	this. WAGE_PER_HOUR= WAGE_PER_HOUR;
     	this. WDAYS_PER_MONTH= WDAYS_PER_MONTH;
     	this.MAX_WRK_HRSMONTH=MAX_WRK_HRSMONTH;
     }
-	
+    
+    public void computewage(String company,int WAGE_PER_HOUR,int WDAYS_PER_MONTH,int MAX_WRK_HRSMONTH)
+    {
+    	 int emphr=0;
+         int empwage=0;
+        int totalwhrs=0;
+        int totalwdays=0;
+        int totalempwage=0;
+        
+        
+        while(totalwhrs<MAX_WRK_HRSMONTH && totalwdays<WDAYS_PER_MONTH)
+        {
+      	  int empcheck=(int) (Math.floor(Math.random()*10)%3);
+            switch(empcheck)
+            {
+            case IS_FULL_TIME:emphr=16;
+                            
+                              break;
+            case IS_PART_TIME:emphr=8;
+         
+                              break;
+            default:emphr=0;
+            
+                   break;
+            }
+            totalwhrs+=emphr;
+            totalwdays++;
+            empwage=emphr*WAGE_PER_HOUR;
+            totalempwage+=empwage;
+            
+        }
+        
+         System.out.println(" employee wage is "+empwage);
+         System.out.println("total employee wage is "+empwage);
+         System.out.println(" total hrs is "+totalwhrs);
+         System.out.println("total days is "+totalwdays);
+  	}
+
+    
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
         System.out.println("welcome to employee wage computation");
+        employeewages ec=new  employeewages("dmart" ,20,20,100);
+        employeewages ec1=new  employeewages("kmart" ,10,20,150);
        
+        ec.computewage(ec.company,ec.WAGE_PER_HOUR,ec.WDAYS_PER_MONTH,ec.MAX_WRK_HRSMONTH);
+        ec1.computewage(ec1.company,ec1.WAGE_PER_HOUR,ec1.WDAYS_PER_MONTH,ec1.MAX_WRK_HRSMONTH);
        
-       
-       int emphr=0;
-       int empwage=0;
-      int totalwhrs=0;
-      int totalwdays=0;
-      int totalempwage=0;
-      
-      employeewages ec=new  employeewages(20,20,100);
-      while(totalwhrs<ec. MAX_WRK_HRSMONTH && totalwdays<ec.WDAYS_PER_MONTH)
-      {
-    	  int empcheck=(int) (Math.floor(Math.random()*10)%3);
-          switch(empcheck)
-          {
-          case IS_FULL_TIME:emphr=16;
-                          
-                            break;
-          case IS_PART_TIME:emphr=8;
-       
-                            break;
-          default:emphr=0;
-          
-                 break;
-          }
-          totalwhrs+=emphr;
-          totalwdays++;
-          empwage=emphr*ec.WAGE_PER_HOUR;
-          totalempwage+=empwage;
-          
-      }
-      
-       System.out.println(" employee wage is "+empwage);
-       System.out.println("total employee wage is "+empwage);
-       System.out.println(" total hrs is "+totalwhrs);
-       System.out.println("total days is "+totalwdays);
 	}
-
 }
