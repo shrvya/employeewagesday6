@@ -1,23 +1,34 @@
 package employeewages;
 
 public class employeewages {
-
+ 
+	public static final int IS_FULL_TIME=1;
+	public static final int  IS_PART_TIME=2;
+	private final int WAGE_PER_HOUR;
+	public final int WDAYS_PER_MONTH;
+	public final int MAX_WRK_HRSMONTH;
+    public employeewages(int WAGE_PER_HOUR,int WDAYS_PER_MONTH,int MAX_WRK_HRSMONTH )
+    {
+    	this. WAGE_PER_HOUR= WAGE_PER_HOUR;
+    	this. WDAYS_PER_MONTH= WDAYS_PER_MONTH;
+    	this.MAX_WRK_HRSMONTH=MAX_WRK_HRSMONTH;
+    }
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
         System.out.println("welcome to employee wage computation");
-       final int IS_FULL_TIME=1;
-       final int IS_PART_TIME=2;
-       final int WAGE_PER_HOUR=20;
-       final int WDAYS_PER_MONTH=20;
        
-       final int TOTAL_WRK_DAYS=20;
-       final int TOTAL_WRK_HRS=100;
+       
+       
        int emphr=0;
        int empwage=0;
       int totalwhrs=0;
       int totalwdays=0;
       int totalempwage=0;
-      while(totalwhrs<TOTAL_WRK_DAYS && totalwdays<TOTAL_WRK_HRS)
+      
+      employeewages ec=new  employeewages(20,20,100);
+      while(totalwhrs<ec. MAX_WRK_HRSMONTH && totalwdays<ec.WDAYS_PER_MONTH)
       {
     	  int empcheck=(int) (Math.floor(Math.random()*10)%3);
           switch(empcheck)
@@ -34,7 +45,7 @@ public class employeewages {
           }
           totalwhrs+=emphr;
           totalwdays++;
-          empwage=emphr*WAGE_PER_HOUR;
+          empwage=emphr*ec.WAGE_PER_HOUR;
           totalempwage+=empwage;
           
       }
