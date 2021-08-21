@@ -10,18 +10,15 @@ public class employeewages {
        final int WAGE_PER_HOUR=20;
        int emphr=0;
        int empwage=0;
-       double empcheck=Math.floor(Math.random()*10)%3;
-       if(empcheck==IS_FULL_TIME)
+       int empcheck=(int) (Math.floor(Math.random()*10)%3);
+       switch(empcheck)
        {
-    	   System.out.println("Full time Employee");
-    	   emphr=16;
-       }
-       else if(empcheck==IS_PART_TIME) {
-    	   System.out.println("Part time Employee");
-    	   emphr=8;
-       }
-       else {
-    	   System.out.println("employee absent");
+       case IS_FULL_TIME:emphr=16;
+                         break;
+       case IS_PART_TIME:emphr=8;
+                         break;
+       default:emphr=0;
+              break;
        }
        empwage=emphr*WAGE_PER_HOUR;
        System.out.println("employee wage is "+empwage);
