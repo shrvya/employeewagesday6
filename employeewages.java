@@ -17,7 +17,7 @@ public class employeewages {
     	this.MAX_WRK_HRSMONTH=MAX_WRK_HRSMONTH;
     }
     
-    public void computewage(String company,int WAGE_PER_HOUR,int WDAYS_PER_MONTH,int MAX_WRK_HRSMONTH)
+    public boolean computewage()
     {
     	 int emphr=0;
          int empwage=0;
@@ -52,6 +52,7 @@ public class employeewages {
          System.out.println("total employee wage is "+empwage);
          System.out.println(" total hrs is "+totalwhrs);
          System.out.println("total days is "+totalwdays);
+         return false ;
   	}
 
     
@@ -59,11 +60,20 @@ public class employeewages {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
         System.out.println("welcome to employee wage computation");
-        employeewages ec=new  employeewages("dmart" ,20,20,100);
-        employeewages ec1=new  employeewages("kmart" ,10,20,150);
-       
-        ec.computewage(ec.company,ec.WAGE_PER_HOUR,ec.WDAYS_PER_MONTH,ec.MAX_WRK_HRSMONTH);
-        ec1.computewage(ec1.company,ec1.WAGE_PER_HOUR,ec1.WDAYS_PER_MONTH,ec1.MAX_WRK_HRSMONTH);
+        employeewages dmart=new  employeewages("dmart" ,20,20,100);
+        employeewages kmart=new  employeewages("kmart" ,10,20,150);
+       dmart.computewage();
+      
+       kmart.computewage();
        
 	}
 }
+
+
+
+
+
+
+
+
+
