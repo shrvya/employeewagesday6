@@ -33,6 +33,11 @@ public class employeewages implements Icomputewages{
 			 System.out.println(companyempwage);
 		 }
 	 }
+	 
+	 public int gettotalwage(String company)
+	 {
+		 return CompanyToEmpWageMap.get(company).totalwage;
+	 }
 	 //method to compute wage for  different companies
     public int computewage(CompanyEmpWage companyEmpWage)
     {
@@ -67,7 +72,8 @@ public class employeewages implements Icomputewages{
            
             System.out.println(" total workin  hrs is "+totalwhrs);
             System.out.println("total working days is "+totalwdays);
-            System.out.println("Daily wage is "+dailywage);
+            System.out.println("dailywage  is "+dailywage);
+           
         }
         return totalempwage;       
   	}
