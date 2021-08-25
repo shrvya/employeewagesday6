@@ -1,30 +1,36 @@
 package employeewages;
+import java.util.*;
 
 public class employeewages implements Icomputewages{
  
     private int numofcompany=0;
 	public static final int IS_FULL_TIME=1;
 	public static final int  IS_PART_TIME=2;
-	private CompanyEmpWage[] CompanyEmpWageArray;
+	private LinkedList<CompanyEmpWage> CompanyEmpWageList;
+	private Map<String,CompanyEmpWage> CompanyToEmpWageMap;
 	//constructor to initialize the members of the class
 	public employeewages()
 	{
-		CompanyEmpWageArray=new CompanyEmpWage[5];
+		CompanyEmpWageList =new LinkedList<>();
+		CompanyToEmpWageMap=new HashMap<>();
 	}
 	
 	
 	 public void addCompanyEmpWage(String company ,int WAGE_PER_HOUR,int WDAYS_PER_MONTH,int MAX_WRK_HRSMONTH )
 	 {
-		 CompanyEmpWageArray[numofcompany]=new CompanyEmpWage(company,WAGE_PER_HOUR, WDAYS_PER_MONTH,MAX_WRK_HRSMONTH );
-		 numofcompany++;
+		 CompanyEmpWage companyempwage=new CompanyEmpWage(company,WAGE_PER_HOUR, WDAYS_PER_MONTH,MAX_WRK_HRSMONTH );
+		 CompanyEmpWageList.add(companyempwage);
+		 CompanyToEmpWageMap.put(company, companyempwage);
 	 }
 	 
 	 public void computewage()
 	 {
-		 for(int i=0;i<numofcompany;i++)
+		 for(int i=0;i<CompanyEmpWageList.size();i++)
 		 {
 			 
-			 CompanyEmpWageArray[i].setTotalWage(this.computewage(CompanyEmpWageArray[i]));
+			 CompanyEmpWage companyempwage=CompanyEmpWageList.get(i);
+			 companyempwage.setTotalWage(this.computewage(companyempwage));
+			 System.out.println(companyempwage);
 		 }
 	 }
 	 //method to compute wage for  different companies
@@ -56,10 +62,12 @@ public class employeewages implements Icomputewages{
             }
             totalwhrs+=emphr;
             totalwdays++;
+            int dailywage=emphr*companyEmpWage.WAGE_PER_HOUR;
             totalempwage=totalwhrs*companyEmpWage.WAGE_PER_HOUR;
            
-            System.out.println(" total hrs is "+totalwhrs);
-            System.out.println("total days is "+totalwdays);
+            System.out.println(" total workin  hrs is "+totalwhrs);
+            System.out.println("total working days is "+totalwdays);
+            System.out.println("Daily wage is "+dailywage);
         }
         return totalempwage;       
   	}
