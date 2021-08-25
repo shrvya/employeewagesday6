@@ -1,6 +1,6 @@
 package employeewages;
 
-public class employeewages {
+public class employeewages implements Icomputewages{
  
     private int numofcompany=0;
 	public static final int IS_FULL_TIME=1;
@@ -19,7 +19,7 @@ public class employeewages {
 		 numofcompany++;
 	 }
 	 
-	 private void computewage()
+	 public void computewage()
 	 {
 		 for(int i=0;i<numofcompany;i++)
 		 {
