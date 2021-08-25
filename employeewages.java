@@ -22,7 +22,9 @@ public class employeewages implements Icomputewages{
 		 CompanyEmpWageList.add(companyempwage);
 		 CompanyToEmpWageMap.put(company, companyempwage);
 	 }
-	 
+	 /*
+	  * method to compute wage
+	  */
 	 public void computewage()
 	 {
 		 for(int i=0;i<CompanyEmpWageList.size();i++)
@@ -33,7 +35,9 @@ public class employeewages implements Icomputewages{
 			 System.out.println(companyempwage);
 		 }
 	 }
-	 
+	 /*
+	  * method to get total wage
+	  */
 	 public int gettotalwage(String company)
 	 {
 		 return CompanyToEmpWageMap.get(company).totalwage;
